@@ -50,7 +50,7 @@ pipeline {
             steps {
                 script {
                     sh '''
-                    docker ps -q --filter "name=desafio-agenda-pro" | grep -q . && docker stop desafio-agenda-pro || echo "No running container"
+                    docker ps -q --filter "name=desafio-agenda-pro" | grep -q . && docker stop desafio-agenda-pro || echo "No hay conteiner corriendo"
                     '''
                 }
             }
