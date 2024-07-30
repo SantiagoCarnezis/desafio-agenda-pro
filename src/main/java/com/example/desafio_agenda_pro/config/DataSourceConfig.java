@@ -16,7 +16,7 @@ import software.amazon.awssdk.services.secretsmanager.model.GetSecretValueRespon
 
 
 @Configuration
-@Profile("jenkins")
+//@Profile("jenkins")
 public class DataSourceConfig {
 
     @Value("${aws.secretName}")
