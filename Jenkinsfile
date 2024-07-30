@@ -59,7 +59,7 @@ pipeline {
         stage('docker deploy'){
             steps {
 
-                sh 'docker run -itd --name desafio-agenda-pro -p 8090:8090 santiagocarnezis/desafio-agenda-pro:${BUILD_NUMBER}'
+                sh 'docker run -itd --name desafio-agenda-pro -p 8090:8090 -e SPRING_PROFILES_ACTIVE=jenkins santiagocarnezis/desafio-agenda-pro:${BUILD_NUMBER}'
             }
         }
     }
