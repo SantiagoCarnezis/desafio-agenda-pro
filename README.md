@@ -71,7 +71,8 @@ Si prefieres usar la instancia desplegada en AWS, utiliza el enviroment de Postm
 - Paginación y Consultas: En un entorno real, todas las consultas que manejan grandes volúmenes de datos deberían estar paginadas para mejorar la eficiencia y evitar problemas de rendimiento.
 - Seguridad: Implementar rotación de secretos en AWS Secrets Manager y otras prácticas de seguridad para proteger la información sensible.
 
-
+**Aqui encontraran la coleccion postman y los enviroments necesarios para realizar las pruebas:**
+https://drive.google.com/drive/folders/1GUISiatTbiAqF0SVI9DmY3Ym6Ybfjkds?usp=sharing
 
 
 
