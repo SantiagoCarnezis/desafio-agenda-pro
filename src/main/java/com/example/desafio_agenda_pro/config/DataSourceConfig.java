@@ -103,7 +103,7 @@ public class DataSourceConfig {
 
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("mysql://" + credenciales.getHost() + ":3306/desafio-agenda-pro");
+        dataSource.setUrl("jdbc:mysql://" + credenciales.getHost() + ":3306/desafio-agenda-pro");
         dataSource.setUsername(credenciales.getUsername());
         dataSource.setPassword(credenciales.getPassword());
         return dataSource;
