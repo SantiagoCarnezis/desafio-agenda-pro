@@ -1,0 +1,51 @@
+pipeline {
+    agent any
+    tools {
+        maven "3.8.4"
+    }
+    stages {
+        stage('compile') {
+
+            steps {
+                sh "mvn clean compile"
+            }
+        }
+        stage('test') {
+            steps {
+                sh "mvn test"
+            }
+        }
+        stage('package') {
+
+            steps {
+                sh "mvn package"
+            }
+        }
+        stage('build docker image'){
+
+            steps {
+                sh 'docker build --no-cache -t santiagocarnezis/desafio-agenda-pro:${BUILD_NUMBER} .'
+            }
+        }
+        stage('docker login'){
+
+            steps {
+                withCredentials([string(credentialsId: 'dockerhub', variable: 'docker-pass')]) {
+                    sh "docker login -u santiagocarnezis -p ${docker-pass}"
+                }
+            }
+        }
+        stage('docker push'){
+
+            steps {
+                sh 'docker push santiagocarnezis/desafio-agenda-pro:${BUILD_NUMBER}'
+            }
+        }
+        stage('docker deploy'){
+            steps {
+
+                sh 'docker run -itd -p  8090:8090 santiagocarnezis/desafio-agenda-pro:${BUILD_NUMBER}'
+            }
+        }
+    }
+}
