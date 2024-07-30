@@ -20,7 +20,7 @@ public interface VentaRepository extends JpaRepository<Venta, Long> {
     List<String> findTop3ByDistinctByCodigoProducto();
 
     @Query("SELECT new com.example.desafio_agenda_pro.dto.estadisticas.ResumenVentasProducto(p.codigo, p.nombre, p.categoria, SUM(v.cantidad), SUM(v.precioTotal)) " +
-            "FROM Producto p RIGHT JOIN Venta v ON v.codigoProducto = p.codigo " +
+            "FROM Producto p JOIN Venta v ON v.codigoProducto = p.codigo " +
             "WHERE p.codigo = :codigo " +
             "GROUP BY p.codigo, p.nombre, p.categoria")
     ResumenVentasProducto findResumenVentasProducto(@Param("codigo") String codigoProducto);
