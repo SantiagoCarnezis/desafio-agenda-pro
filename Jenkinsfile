@@ -49,10 +49,9 @@ pipeline {
         stage('stop container') { //si ya hay un container corriendo, lo frena
             steps {
                 script {
-//                     sh '''
-//                     docker ps -q --filter "name=desafio-agenda-pro" | grep -q . && docker stop desafio-agenda-pro
-//                     '''
-                    sh 'docker stop desafio-agenda-pro'
+                    sh '''
+                    docker ps -q --filter "name=desafio-agenda-pro" | grep -q . && docker stop desafio-agenda-pro
+                    '''
                 }
             }
         }
