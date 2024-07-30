@@ -41,12 +41,12 @@ public class DataSourceConfig {
 
         try {
             AwsSecretManagerDatabaseSecret secret = objectMapper.readValue(secretString, AwsSecretManagerDatabaseSecret.class);
-            System.out.println("Username: " + secret.getUsername());
-            System.out.println("Password: " + secret.getPassword());
-            System.out.println("Engine: " + secret.getEngine());
-            System.out.println("Host: " + secret.getHost());
-            System.out.println("Port: " + secret.getPort());
-            System.out.println("DB Instance Identifier: " + secret.getDbInstanceIdentifier());
+//            System.out.println("Username: " + secret.getUsername());
+//            System.out.println("Password: " + secret.getPassword());
+//            System.out.println("Engine: " + secret.getEngine());
+//            System.out.println("Host: " + secret.getHost());
+//            System.out.println("Port: " + secret.getPort());
+//            System.out.println("DB Instance Identifier: " + secret.getDbInstanceIdentifier());
             return secret;
 
         } catch (Exception e) {
