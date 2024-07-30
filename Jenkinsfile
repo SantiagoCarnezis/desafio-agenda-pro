@@ -46,10 +46,20 @@ pipeline {
                 sh 'docker push santiagocarnezis/desafio-agenda-pro:${BUILD_NUMBER}'
             }
         }
+        stage('stop container') { //si ya hay un container corriendo, lo frena
+            steps {
+                script {
+//                     sh '''
+//                     docker ps -q --filter "name=desafio-agenda-pro" | grep -q . && docker stop desafio-agenda-pro
+//                     '''
+                    sh 'docker stop desafio-agenda-pro'
+                }
+            }
+        }
         stage('docker deploy'){
             steps {
 
-                sh 'docker run -itd -p  8090:8090 santiagocarnezis/desafio-agenda-pro:${BUILD_NUMBER}'
+                sh 'docker run -itd --name desafio-agenda-pro -p 8090:8090 santiagocarnezis/desafio-agenda-pro:${BUILD_NUMBER}'
             }
         }
     }
