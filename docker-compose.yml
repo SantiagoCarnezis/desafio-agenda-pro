@@ -1,0 +1,29 @@
+version: '3.7'
+services:
+  agenda-pro-db:
+    container_name: agenda-pro-db
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - mysql_agenda_pro_data:/var/lib/mysql
+    ports:
+      - "3307:3306"
+    expose:
+      - 3307
+
+  agenda-pro-be:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    links:
+      - agenda-pro-db
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    ports:
+      - "8091:8090"
+    expose:
+      - 8091
+
+volumes:
+  mysql_agenda_pro_data:
