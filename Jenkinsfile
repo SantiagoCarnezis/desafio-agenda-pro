@@ -3,11 +3,15 @@ pipeline {
     tools {
         maven "mvn-3.8.4"
     }
+
+    environment {
+        SPRING_PROFILES_ACTIVE = 'jenkins'
+    }
+
     stages {
         stage('compile') {
 
             steps {
-                sh "mvn -version"
                 sh "mvn clean compile"
             }
         }
